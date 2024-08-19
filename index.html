@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.countdown div {
+    margin: 0 10px;
+    text-align: center;
+}
+
+.countdown span {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.subscribe-form input[type="email"] {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.subscribe-form button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6b6b;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.subscribe-form button:hover {
+    background-color: #ff4c4c;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .countdown {
+        flex-direction: column;
+    }
+
+    .countdown div {
+        margin-bottom: 10px;
+    }
+
+    .subscribe-form input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .subscribe-form button {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>We're Coming Soon</h1>
+        <p>Our website is under construction, but we're almost ready to launch!</p>
+        <div class="countdown" id="countdown">
+            <div>
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+        <p>Stay tuned and subscribe to our newsletter!</p>
+        <form action="#" class="subscribe-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Dec 31, 2024 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the time remaining
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the elements with ids
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // If the countdown is over, display some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "We're Live!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
